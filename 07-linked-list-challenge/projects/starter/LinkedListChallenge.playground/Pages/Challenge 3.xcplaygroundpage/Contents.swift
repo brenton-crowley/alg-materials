@@ -10,8 +10,31 @@ extension LinkedList {
     
   mutating func reverse() {
     
+      guard let first = head else { return }
+      
+      // start at the head
+      var currentNode = first
+      
+      // keep going until we land at the end.
+      while let next = currentNode.next {
+          currentNode.next = currentNode
+          currentNode = next
+      }
   }
+
 }
 
+example(of: "reverse") {
+    
+    var list = LinkedList<Int>()
+    
+    (1...11).forEach { list.append($0) }
+    
+    print("Before reverse: \(list)")
+    
+    list.reverse()
+    
+    print("After reverse: \(list)")
+}
 
 //: [Next Challenge](@next)
